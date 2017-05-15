@@ -30,10 +30,13 @@ public class PlayerController : MonoBehaviour {
 		Vector3 newVelocity;
 		if (Input.GetAxisRaw("Horizontal") > 0f) {
 			newVelocity = new Vector3(moveSpeed, rigidBody.velocity.y, 0f);
-			rigidBody.velocity = newVelocity; 
+			rigidBody.velocity = newVelocity;
+			// Set localScale so the player faces the direction she's moving
+			transform.localScale = new Vector3(1f, 1f, 1f);
 		} else if (Input.GetAxisRaw("Horizontal") < 0f) {
 			newVelocity = new Vector3(-moveSpeed, rigidBody.velocity.y, 0f);
 			rigidBody.velocity = newVelocity; 
+			transform.localScale = new Vector3(-1f, 1f, 1f);
 		} else {
 			newVelocity = new Vector3(0f, rigidBody.velocity.y, 0f);
 			rigidBody.velocity = newVelocity;
