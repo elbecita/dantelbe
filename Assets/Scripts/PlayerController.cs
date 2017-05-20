@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpSpeed;
+	public float doubleJumpSpeed;
 
 	// Variables to check that the user is on the ground
 	public Transform groundCheck;
@@ -13,11 +14,15 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask whatIsGround;
 	public bool isGrounded;
 
+	public bool isInPet;
+	private bool canDoubleJump;
+
 	private Rigidbody2D rigidBody;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D>();
+		canDoubleJump = isInPet;
 	}
 	
 	// Update is called once per frame
@@ -42,10 +47,17 @@ public class PlayerController : MonoBehaviour {
 			rigidBody.velocity = newVelocity;
 		}
 
-		// Only jump if the Player is on the ground
-		if (Input.GetButtonDown("Jump") && isGrounded) {
-			newVelocity = new Vector3(rigidBody.velocity.x, jumpSpeed, 0f);
-			rigidBody.velocity = newVelocity;
+		// Only jump if the Player is on the ground or on doubleJump
+		if (Input.GetButtonDown("Jump")) {
+			if (isGrounded) {
+				canDoubleJump = isInPet;
+				newVelocity = new Vector3(rigidBody.velocity.x, jumpSpeed, 0f);
+				rigidBody.velocity = newVelocity;
+			} else if (canDoubleJump) {
+				canDoubleJump = false;
+				newVelocity = new Vector3(rigidBody.velocity.x, jumpSpeed, 0f);
+				rigidBody.velocity = newVelocity;
+			}
 		}
 	}
 }
