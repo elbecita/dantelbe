@@ -69,7 +69,7 @@ public class BackgroundController : MonoBehaviour {
 		// We move the most left layer to be the last in the right
 		//int lastLeft = leftIndex;
 		print(">>> blabla scrollright");
-		backgrounds[leftIndex].position = new Vector3((backgrounds[rightIndex].position.x + backgroundSize), 0f, backgrounds[rightIndex].position.z) ;
+		backgrounds[leftIndex].position = new Vector3((backgrounds[rightIndex].position.x + backgroundSize), 0f, backgrounds[leftIndex].position.z) ;
 		rightIndex = leftIndex;
 		leftIndex++;
 		if (leftIndex == backgrounds.Length) {
