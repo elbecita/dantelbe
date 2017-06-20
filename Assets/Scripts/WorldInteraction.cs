@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class WorldInteraction : MonoBehaviour {
 
-	void Update () {
+	// TODO: every interactable will have its own trigger key and the player
+	// will need to enter the collider, so right now WorldInteraction is not used
+	/*void Update () {
 		// IsPointerOverGameObject used to identify if we are clicking in the UI
 		if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
 			GetInteraction();
@@ -21,5 +23,5 @@ public class WorldInteraction : MonoBehaviour {
 				print("Interactable object clicked! Name: " + interactedObject.name);
 			}
 		}
-	}
+	}*/
 }
