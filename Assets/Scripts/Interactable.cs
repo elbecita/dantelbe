@@ -30,6 +30,20 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D otherCollider) {
+		if (otherCollider.tag == "Player") {
+			print(">>> Interactable can interact, press interaction key.");
+			canInteract = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D otherCollider) {
+		if (otherCollider.tag == "Player") {
+			print(">>> Interactable can NOT interact anymore.");
+			canInteract = false;
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
 			print(">>> Interactable can interact, press interaction key.");
